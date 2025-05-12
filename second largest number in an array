@@ -1,0 +1,24 @@
+#include <iostream>
+#include<climits>
+using namespace std;
+int main() {
+   int n;
+   cin>>n;
+   int a[n],i,maxi=INT_MIN,sec=-1;
+   for(i=0;i<n;i++){
+       cin>>a[i];
+      if(a[i]>maxi){
+          if(sec<maxi){
+          sec=maxi;}
+          maxi=a[i];
+      }
+      else if(a[i]>sec&&a[i]!=maxi)
+      sec=a[i];
+   }
+cout<<sec;
+    return 0;
+}
+output
+5
+9 0 5 2 9
+5
