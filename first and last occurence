@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+int lowerbound(int a[], int l, int h, int x) {
+    int mid, ind = -1;
+    while (l <= h) {
+        mid = (l + h) / 2;
+        if (a[mid] >= x) {
+            if (a[mid] == x) ind = mid;
+            h = mid - 1;
+        } else {
+            l = mid + 1;
+        }
+    }
+    return ind;
+}
+
+int upperbound(int a[], int l, int h, int x) {
+    int mid, ind = -1;
+    while (l <= h) {
+        mid = (l + h) / 2;
+        if (a[mid] <= x) {
+            if (a[mid] == x) ind = mid;
+            l = mid + 1;
+        } else {
+            h = mid - 1;
+        }
+    }
+    return ind;
+}
+
+int main() {
+    int n, x;
+    cin >> n >> x;
+    int a[n];
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+
+    int f = lowerbound(a, 0, n - 1, x);
+    if (f == -1)
+        cout << 0;
+    else {
+        int l = upperbound(a, 0, n - 1, x);
+        cout << l - f + 1;
+    }
+    return 0;
+}
