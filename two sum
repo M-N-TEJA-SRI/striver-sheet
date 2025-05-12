@@ -1,0 +1,30 @@
+#include <iostream>
+#include<vector>
+using namespace std;
+int main() {
+   int n,key,sum;
+   cin>>n>>key;
+   int a[n],i,j;
+  vector<vector<int>>v;
+   for(i=0;i<n;i++){
+       cin>>a[i];  }
+  i=0,j=n-1;
+  while(i<j){
+      sum=a[i]+a[j];
+      if(sum==key)
+          v.push_back({a[i++],a[j--]});
+      else if(sum>key)
+      j--;
+      else
+      i++;
+  }
+  for(auto it:v){
+      cout<<it[0]<<" "<<it[1]<<"\n";
+  }
+    return 0;
+}
+output
+6 6
+1 2 3 4 5 6
+1 5
+2 4
