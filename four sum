@@ -1,0 +1,33 @@
+#include <iostream>
+#include<vector>
+using namespace std;
+int main() {
+   int n,key,sum;
+   cin>>n>>key;
+   int a[n],i,j,k,l;
+  vector<vector<int>>v;
+   for(i=0;i<n;i++){
+       cin>>a[i];  }
+  for(i=0;i<n-2;i++){
+      for(j=i+1;j<n-1;j++){
+      k=j+1,l=n-1;
+  while(k<l){
+      sum=a[i]+a[j]+a[k]+a[l];
+      if(sum==key)
+          v.push_back({a[i],a[j],a[k++],a[l--]});
+      else if(sum>key)
+      l--;
+      else
+      k++;
+  }
+      }
+  }
+  for(auto it:v){
+      cout<<it[0]<<" "<<it[1]<<" "<<it[2]<<" "<<it[3]<<"\n";
+  }
+    return 0;
+}
+output
+6 6
+0 1 2 3 4 5 
+0 1 2 3
